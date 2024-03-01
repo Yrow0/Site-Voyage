@@ -1,0 +1,48 @@
+{% load static %}
+<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'admin/img/Paris.jpg' %}" class="d-block w-100" alt="paris">
+        <div class="carousel-caption d-none d-md-block">
+            <h5>Paris</h5>
+            <p>Ville romantique aux rues élégantes et à l'histoire riche.</p>
+            <a href="{% url 'trip_details' 2 %}" type="button" class="btn btn-outline-light">Découvrir</a>
+
+          </div>
+    </div>
+
+
+    <div class="carousel-item">
+      <img src="{% static 'admin/img/New York.jpg' %}" class="d-block w-100" alt="new-york">
+        <div class="carousel-caption d-none d-md-block">
+            <h5>New York</h5>
+            <p>La ville qui ne dort jamais, symbole d'énergie et de diversité.</p>
+            <a href="{% url 'trip_details' 1 %}" type="button" class="btn btn-outline-light">Découvrir</a>
+          </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'admin/img/Tokyo.jpg' %}" class="d-block w-100" alt="tokyo">
+        <div class="carousel-caption d-none d-md-block">
+            <h5>Tokyo</h5>
+            <p>Métropole alliant tradition et modernité, offrant une expérience unique.</p>
+            <a href="{% url 'trip_details' 3 %}" type="button" class="btn btn-outline-light">Découvrir</a>
+
+          </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<style>
+    .carousel-item img {
+        height: 500px;
+        object-fit: cover;
+    }
+</style>

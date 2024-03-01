@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+    <form action="" method="post" style="height: 80vh;">
+    <div class="test">
+        <h1>Login</h1>
+        <br/>
+        {% csrf_token %}
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Username</label>
+    <input type="text" class="form-control" name="username" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" name="password">
+  </div>
+        <input type="submit" value="Submit" class="btn btn-secondary" />
+        <a href="{% url 'register'%}"> Créer un compte </a>
+        </div>
+    </form>
+
+
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .test {
+        background-color: rgba(236, 236, 236, 0.8);
+        width: 30%;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.2);
+    }
+</style>
+
+{% endblock %}

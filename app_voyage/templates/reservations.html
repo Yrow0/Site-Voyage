@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Mes Réservations</h1>
+
+    {% if reservations.count == 0 %}
+        <p>Vous n'avez pas de réservations</p>
+{% else %}
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>Destination</th>
+                <th>Date de départ</th>
+                <th>Date de retour</th>
+                <th>Nombre de places</th>
+                <th>Actions</th>
+            </tr>
+            {% for reservation in reservations %}
+                <tr>
+                    <td>{{ reservation.trip.destination }}</td>
+                    <td>{{ reservation.trip.departuredate }}</td>
+                    <td>{{ reservation.trip.returndate }}</td>
+                    <td>{{ reservation.trip.seats }}</td>
+                    <td>
+                        <a href="{% url 'delete_reservation' reservation.id %}" class="btn btn-outline-danger">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+    <a class="btn btn-primary" href="{% url 'home' %}">Faire une réservation</a>
+
+{% endblock %}

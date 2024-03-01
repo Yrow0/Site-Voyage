@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="flex-container" style="display: flex; align-items: center;">
+                <h1>Détail du voyage - {{ trip.destination }}</h1>
+                {% if not isontrip %}
+                <a class="btn btn-primary" style="margin-left: 10px; height: 80%;" href="{% url 'add_reservation' trip.id %}">Réserver</a>
+                {% endif %}
+            </div>
+
+            <p><strong>Date de départ :</strong> {{ trip.departuredate }}</p>
+            <p><strong>Date de retour :</strong> {{ trip.returndate }}</p>
+            <p><strong>Moyen de transport :</strong> {{ trip.transporttype }}</p>
+            <p><strong>Prix :</strong> {{ trip.price }}€</p>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <h2>Liste des participants</h2>
+            <ul class="list-group">
+                {% for participant in participants %}
+                <li class="list-group-item">{{ participant.username }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <h2>Liste des hébergements - Activités</h2>
+            <div class="list-group">
+                {% for accommodation in accommodations %}
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ accommodation.hotelname }}</h5>
+                        <small>{{ accommodation.address }}</small>
+                    </div>
+                    <p class="mb-1">Début : {{ accommodation.startdate }} | Fin : {{ accommodation.enddate }}</p>
+                    <small>Téléphone : {{ accommodation.phonenumber }}</small>
+                    <p class="mb-1">{{ accommodation.details }}</p>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <a class="btn btn-primary" href="{% url 'trips' %}">Retour à la liste des voyages</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

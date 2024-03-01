@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% include 'carousel.html' with trips=trips %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2>Découvrez nos destinations</h2>
+            <p>Explorez nos destinations populaires et commencez à planifier votre prochain voyage dès aujourd'hui.</p>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <h3>Paris</h3>
+            <p>Ville romantique aux rues élégantes et à l'histoire riche.</p>
+            <a href="{% url 'trip_details' 2 %}" class="btn btn-primary">En savoir plus</a>
+        </div>
+        <div class="col-md-4">
+            <h3>New York</h3>
+            <p>La ville qui ne dort jamais, symbole d'énergie et de diversité.</p>
+            <a href="{% url 'trip_details' 1 %}" class="btn btn-primary">En savoir plus</a>
+        </div>
+        <div class="col-md-4">
+            <h3>Tokyo</h3>
+            <p>Métropole alliant tradition et modernité, offrant une expérience unique.</p>
+            <a href="{% url 'trip_details' 3 %}" class="btn btn-primary">En savoir plus</a>
+        </div>
+    </div>
+</div>
+    <br>
+
+
+{% endblock %}
+```

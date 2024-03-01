@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Voyages</h1>
+    <p>Voici la liste des voyages</p>
+
+    <!-- Formulaire de recherche -->
+    <form action="{% url 'search_trips' %}" method="post">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" name="search_query" placeholder="Recherche par destination...">
+            <button class="btn btn-outline-secondary" type="submit">Rechercher</button>
+        </div>
+    </form>
+
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>Destination</th>
+            <th>Date de départ</th>
+            <th>Date de retour</th>
+            <th>Nombre de places restantes</th>
+            <th>Moyen de transport</th>
+            <th>Actions</th>
+        </tr>
+        {% for trip in trips %}
+            <tr>
+                <td>{{ trip.destination }}</td>
+                <td>{{ trip.departuredate }}</td>
+                <td>{{ trip.returndate }}</td>
+                <td>{{ trip.seats }}</td>
+                <td>{{ trip.transporttype }}</td>
+
+                <td style="display:flex;justify-content: space-evenly">
+                    <a href="{% url 'add_reservation' trip.id %}" class="btn btn-outline-success">Ajouter</a>
+                    <a href="{% url 'trip_details' trip.id %}" class="btn btn-outline-warning">Détails</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
